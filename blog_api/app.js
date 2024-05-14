@@ -3,9 +3,11 @@ const express = require("express")
 const app = express()
 const PORT = process.env.PORT || 3000
 const dbConnect = require("./utils/dbConnect")
+const indexRouter = require("./routes")
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(indexRouter)
 dbConnect()
 .then(() => {
     console.info("Connected to MongoDB database successfully!");
