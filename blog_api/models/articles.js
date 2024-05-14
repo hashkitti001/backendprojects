@@ -7,5 +7,5 @@ const articleSchema = mongoose.Schema({
     "publishedAt": { type: Date, default: Date.now }
 })
 
-const Article = mongoose.model("article", articleSchema)
+const Article = mongoose.model("articles", articleSchema)
 module.exports = Article

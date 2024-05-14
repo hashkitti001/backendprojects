@@ -9,7 +9,7 @@ function dummy () {
     return 1
 }
 /*All articles - articleController.getAllArticles */
-indexRouter.get("/articles", dummy)
+indexRouter.get("/articles", articleController.getAllArticles)
 /* Get article by id - articleController.getArticleById*/
 indexRouter.get("/articles/:id", dummy)
 
