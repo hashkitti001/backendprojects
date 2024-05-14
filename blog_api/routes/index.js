@@ -11,10 +11,10 @@ function dummy () {
 /*All articles - articleController.getAllArticles */
 indexRouter.get("/articles", articleController.getAllArticles)
 /* Get article by id - articleController.getArticleById*/
-indexRouter.get("/articles/:id", dummy)
+indexRouter.get("/articles/:id",articleController.getArticleById)
 
 /* Get article by publishing date */
-indexRouter.get("/articlesbyDate", dummy)
+indexRouter.get("/articlesbyDate", articleController.getArticleByDate)
 
 /* Create an article */
 indexRouter.post("/article", dummy)
