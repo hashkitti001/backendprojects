@@ -17,12 +17,12 @@ indexRouter.get("/articles/:id",articleController.getArticleById)
 indexRouter.get("/articlesbyDate", articleController.getArticleByDate)
 
 /* Create an article */
-indexRouter.post("/article", dummy)
+indexRouter.post("/article", articleController.createArticle)
 
 /* Update an existing article by it's ID */
 indexRouter.patch("/article/:id", dummy)
 
 /* Delete an article */
-indexRouter.delete("/article/:id", dummy)
+indexRouter.delete("/article/:id",articleController.deleteArticle)
 
 module.exports = indexRouter

@@ -61,10 +61,24 @@ let createArticle = async (req, res) => {
             res.status(201).json({ article })
         })
 }
+
+
+let deleteArticle = async(req, res) => {
+    let { id } = req.params
+    const article = await Article.findByIdAndDelete(id)
+    if (!article) {
+        res.status(404).json({ error: "No article found" })
+    }
+    else {
+        res.status(200).json({ article })
+    }
+
+}
 module.exports = {
     getAllArticles,
     getArticleById,
     getArticleByDate,
-    createArticle
+    createArticle, 
+    deleteArticle
 
 }
