@@ -4,10 +4,8 @@
 */
 const express = require("express")
 const indexRouter = express.Router()
+const articleController = require("../controllers/articleController")
 
-function dummy () {
-    return 1
-}
 /*All articles - articleController.getAllArticles */
 indexRouter.get("/articles", articleController.getAllArticles)
 /* Get article by id - articleController.getArticleById*/
@@ -20,7 +18,7 @@ indexRouter.get("/articlesbyDate", articleController.getArticleByDate)
 indexRouter.post("/article", articleController.createArticle)
 
 /* Update an existing article by it's ID */
-indexRouter.patch("/article/:id", dummy)
+indexRouter.patch("/article/:id", articleController.updateArticle)
 
 /* Delete an article */
 indexRouter.delete("/article/:id",articleController.deleteArticle)

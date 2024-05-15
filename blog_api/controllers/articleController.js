@@ -34,27 +34,37 @@ let getArticleById = async (req, res) => {
 
 }
 
+
 let getArticleByDate = async (req, res) => {
-    let { date } = req.query
-    const articles = await Article.find({ "publishDate": date })
-    if (!articles) {
-        res.status(404).json({ error: "No articles found" })
+    try {
+        let { date } = req.query;
+        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!dateRegex.test(date)) {
+            return res.status(400).json({ error: "Invalid format for date. Use yyyy-mm-dd" });
+        }
+        const articles = await Article.find({
+            "publishedAt": date
+        })
+        if (!articles || articles.length == 0) {
+            res.status(404).json({ message: "No articles found in that date range" })
+
+        }
+        return res.status(200).json({articles})
+    } catch (error) {
+        // If an error occurs during the process, return a 500 response with the error message
+        res.status(500).json({ error: error.message });
     }
-    else {
-        res.status(200).json({ articles })
-    }
-}
+};
 
 let createArticle = async (req, res) => {
-    let { title, content, author, publishDate } = req.body
-    if (!title || !content || !author || !publishDate) {
+    let { title, body, description, author } = req.body
+    console.log(author)
+    if (!title || !body || !author || !description) {
         return res.status(400).json({ error: "Please provide all required fields" })
     }
-    if (!validator.isDate(publishDate)) {
-        return res.status(400).json({ error: "Please provide a valid date" })
-    }
+
     let newArticle = new Article({
-        title, content, author, publishDate
+        title, body, author, description
     })
     await newArticle.save()
         .then(article => {
@@ -63,8 +73,8 @@ let createArticle = async (req, res) => {
 }
 
 let updateArticle = async (req, res) => {
-    let id =  req.params.id
-    let { title, content, author, publishDate } = req.body  
+    let id = req.params.id
+    let { title, content, author, publishDate } = req.body
     if (!title || !content || !author || !publishDate) {
         return res.status(400).json({ error: "Please provide all required fields" })
     }
@@ -79,7 +89,7 @@ let updateArticle = async (req, res) => {
         res.status(200).json({ article })
     }
 }
-let deleteArticle = async(req, res) => {
+let deleteArticle = async (req, res) => {
     let { id } = req.params
     const article = await Article.findByIdAndDelete(id)
     if (!article) {
@@ -94,7 +104,8 @@ module.exports = {
     getAllArticles,
     getArticleById,
     getArticleByDate,
-    createArticle, 
+    createArticle,
+    updateArticle,
     deleteArticle
 
 }
