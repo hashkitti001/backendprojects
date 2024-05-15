@@ -62,7 +62,23 @@ let createArticle = async (req, res) => {
         })
 }
 
-
+let updateArticle = async (req, res) => {
+    let id =  req.params.id
+    let { title, content, author, publishDate } = req.body  
+    if (!title || !content || !author || !publishDate) {
+        return res.status(400).json({ error: "Please provide all required fields" })
+    }
+    if (!validator.isDate(publishDate)) {
+        return res.status(400).json({ error: "Please provide a valid date" })
+    }
+    const article = await Article.findByIdAndUpdate(id, { title, content, author, publishDate }, { new: true })
+    if (!article) {
+        res.status(404).json({ error: "No article found" })
+    }
+    else {
+        res.status(200).json({ article })
+    }
+}
 let deleteArticle = async(req, res) => {
     let { id } = req.params
     const article = await Article.findByIdAndDelete(id)
