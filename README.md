@@ -1,6 +1,6 @@
 # Backend Project Ideas Portfolio
 
-This repository contains a collection of backend project ideas curated from roadmap.sh to help enhance my skills and build your portfolio as a backend developer.
+This repository contains a collection of backend project ideas curated from [roadmap.sh](https://roadmap.sh/backend/project-ideas) to help enhance my skills and build your portfolio as a backend developer.
 
 ## Project Ideas
 
@@ -38,3 +38,6 @@ Feel free to contribute additional project ideas or improvements to existing one
 ## License
 
 This repository is licensed under the MIT License.
+
+## Acknowledgements
+Shoutouts to Fernando Doglio wrote the [article] (https://roadmap.sh/backend/project-ideas)

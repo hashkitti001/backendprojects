@@ -1,4 +1,5 @@
 const cookieParser = require("cookie-parser")
+const logger = require("morgan")
 const express = require("express")
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -8,6 +9,8 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(indexRouter)
+logger("dev")
+/* Initiate db connection */
 dbConnect()
 .then(() => {
     console.info("Connected to MongoDB database successfully!");
