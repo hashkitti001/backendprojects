@@ -1,5 +1,6 @@
 const Article = require("../models/articles")
 const validator = require("validator")
+
 let getAllArticles = async (req, res) => {
     try {
         const articles = await Article.find({})

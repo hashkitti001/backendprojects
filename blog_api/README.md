@@ -19,15 +19,22 @@
    - Parameters: 
      - `id`: ID of the article.
    - Response: JSON object representing the article.
+3. **Get Articles by Date**:
+   - Endpoint: `/articlebyDate?date={dateString}`
+   - Method: GET
+   - Description: Returns a single article specified by its date.
+   - Parameters: 
+     - `dateString`: String with date with format yyyy-mm-dd.
+   - Response: JSON object representing the articles.
 
-3. **Create Article Endpoint**:
-   - Endpoint: `/articles`
+4. **Create Article Endpoint**:
+   - Endpoint: `/article`
    - Method: POST
    - Description: Creates a new article to be published.
    - Request Body: JSON object representing the new article.
    - Response: JSON object representing the created article.
 
-4. **Delete Article Endpoint**:
+5. **Delete Article Endpoint**:
    - Endpoint: `/articles/{id}`
    - Method: DELETE
    - Description: Deletes a single article specified by its ID.
@@ -35,7 +42,7 @@
      - `id`: ID of the article.
    - Response: Success message indicating deletion.
 
-5. **Update Article Endpoint**:
+6. **Update Article Endpoint**:
    - Endpoint: `/articles/{id}`
    - Method: PUT
    - Description: Updates a single article specified by its ID.
@@ -46,8 +53,8 @@
 
 **Tech Stack Recommendations:**
 
-- **Backend Framework**: Fastify (Node.js), Django (Python), Ruby on Rails or Sinatra (Ruby).
-- **Database**: MongoDB (NoSQL) or MySQL (SQL).
+- **Backend Framework**: Express(Node.js)
+- **Database**: MongoDB (NoSQL) 
 
 **Additional Notes:**
 
