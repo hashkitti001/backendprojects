@@ -9,7 +9,7 @@ const dummy = () => {
 userRouter.post("/users/createuser", userController.createUser)
 
 /* Login user*/
-userRouter.post("/users/login", dummy)
+userRouter.post("/users/login", userController.loginUser)
 
 /* Logout user */
 userRouter.post("/users/logout", dummy)
