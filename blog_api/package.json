@@ -13,13 +13,9 @@
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.4",
-    "morgan": "^1.10.0",
-    "mysql": "^2.18.1",
-    "node-redis": "^0.1.7",
-    "redis": "^4.6.13",
-    "sequelize": "^6.37.3"
+    "morgan": "^1.10.0"
+    
   },
   "devDependencies": {
     "cors": "^2.8.5"
