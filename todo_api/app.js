@@ -3,7 +3,7 @@ const logger = require("morgan")
 const express = require("express")
 const app = express()
 const PORT = process.env.PORT || 3000
-const dbConnect = require("./utils/dbConnect")
+const {dbConnect} = require("./utils/dbConnect")
 const indexRouter = require("./routes")
 app.use(cookieParser())
 app.use(express.json())

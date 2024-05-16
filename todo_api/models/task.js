@@ -35,5 +35,7 @@ const Task = db.define(
         }
     }
 );
+/* Foreign key relationship between task and user */
 Task.belongsTo(User)
+
 module.exports = Task;
