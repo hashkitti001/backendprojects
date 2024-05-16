@@ -37,5 +37,13 @@ const Task = db.define(
 );
 /* Foreign key relationship between task and user */
 Task.belongsTo(User)
-
+const syncModel = async () => {
+    try {
+        await Task.sync();
+        console.log("Task model synchronized successfully");
+    } catch (e) {
+        console.error("Error synchronizing User model:", e.message);
+        
+    }
+};
 module.exports = Task;

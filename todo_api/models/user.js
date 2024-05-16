@@ -19,4 +19,14 @@ const User  = db.define(
         allowNull:false
     }
 })
+const syncModel = async () => {
+    try {
+        await User.sync();
+        console.log("User model synchronized successfully");
+    } catch (e) {
+        console.error("Error synchronizing User model:", error);
+       
+    }
+};
+syncModel()
 module.exports = User
