@@ -11,7 +11,7 @@ taskRouter.get("/tasks/alltasks", authMiddleware, taskController.getAllTasks)
 /tasks/bystatus?status=pending
 */
 
-taskRouter.get("/tasks", dummy)
+taskRouter.get("/tasks/bystatus", taskController.getByStatus)
 /* GET task by id */
 taskRouter.get("/tasks", dummy)
 /*POST new task */
