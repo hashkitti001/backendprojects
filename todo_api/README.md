@@ -1,5 +1,3 @@
-You're right, including authentication endpoints in the README is essential for providing comprehensive documentation. Here's an updated version of the README with authentication endpoints included:
-
 **To-Do List API**
 
 **Functional Requirements:**

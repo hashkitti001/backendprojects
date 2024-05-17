@@ -10,7 +10,7 @@ const createTask = async (req, res) => {
             return res.status(409).json({ message: "Missing field" })
         }
         const newTask = Task.create({
-            description, status, priority
+            description, status, priority, userId:req.user.id
         })
         if (newTask) {
             res.status(201).json({ message: "Created new task in todo" })
@@ -21,7 +21,8 @@ const createTask = async (req, res) => {
     }
 
 }
+
 module.exports = {
     createTask,
-    getAllTasks
+    getAllTasks,
 }

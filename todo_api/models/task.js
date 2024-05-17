@@ -28,14 +28,22 @@ const Task = db.define(
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        },
+        userId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references:{
+                model:User,
+                key:'id'
+            }
         }
     }
 );
 /* Foreign key relationship between task and user */
-Task.belongsTo(User)
+Task.belongsTo(User, {foreignKey: 'createdBy', targetKey: 'id'})
 const syncModel = async () => {
     try {
-        await Task.sync();
+        await Task.sync()
         console.log("Task model synchronized successfully");
     } catch (e) {
         console.error("Error synchronizing User model:", e.message);
