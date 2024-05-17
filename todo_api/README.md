@@ -12,11 +12,11 @@
    - Response: JSON array of tasks.
 
 2. **Get Single Task Endpoint**:
-   - Endpoint: `/tasks/{id}`
+   - Endpoint: `/tasks/{taskId}`
    - Method: GET
    - Description: Returns a single task specified by its ID.
    - Parameters:
-     - `id`: ID of the task.
+     - `taskId`: ID of the task.
    - Response: JSON object representing the task.
 
 3. **Create Task Endpoint**:
@@ -27,8 +27,8 @@
    - Response: JSON object representing the created task.
 
 4. **Update Task Status Endpoint**:
-   - Endpoint: `/tasks/{id}`
-   - Method: PUT
+   - Endpoint: `/task/{taskId}`
+   - Method: PATCH
    - Description: Updates the status of a single task specified by its ID.
    - Parameters:
      - `id`: ID of the task.
@@ -36,7 +36,7 @@
    - Response: JSON object representing the updated task.
 
 5. **Delete Task Endpoint**:
-   - Endpoint: `/tasks/{id}`
+   - Endpoint: `/task/{taskId}`
    - Method: DELETE
    - Description: Deletes a single task specified by its ID.
    - Parameters:
@@ -45,27 +45,35 @@
 
 6. **Authentication Endpoints**:
    - **Register User Endpoint**:
-     - Endpoint: `/auth/register`
+     - Endpoint: `/users/register`
      - Method: POST
      - Description: Register a new user account.
      - Request Body: JSON object containing username and password.
      - Response: Success message indicating successful registration.
 
    - **Login Endpoint**:
-     - Endpoint: `/auth/login`
+     - Endpoint: `/users/login`
      - Method: POST
      - Description: Authenticate user and obtain an access token.
      - Request Body: JSON object containing username and password.
      - Response: JSON object containing access token.
+  - **Logout Endpoint**
+     - **Login Endpoint**:
+     - Endpoint: `/users/logout`
+     - Method: POST
+     - Description: Logout user 
+     - Request Body: Cookie containing access token
+     - Response: JSON object containing status of logout
 
-**Tech Stack Recommendations:**
+**Tech Stack:**
 
 - **Backend Framework**: Express (Node.js)
-- **Database**: MongoDB (NoSQL)
+- **Database**: MySQL via Sequelize ORM
+
 
 **Additional Notes:**
 
-- Implement basic authentication middleware to protect sensitive operations like creating, updating, and deleting tasks.
+- Implemented basic authentication middleware to protect sensitive operations like creating, updating, and deleting tasks.
 - Validate incoming data to ensure data integrity and security.
 - Thoroughly document API endpoints, including request and response formats, error handling, and authentication requirements.
 - Test API endpoints rigorously using tools like Postman or automated testing frameworks.
