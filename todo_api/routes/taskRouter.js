@@ -13,7 +13,7 @@ taskRouter.get("/tasks/alltasks", authMiddleware, taskController.getAllTasks)
 
 taskRouter.get("/tasks/bystatus", taskController.getByStatus)
 /* GET task by id */
-taskRouter.get("/tasks", dummy)
+taskRouter.get("/tasks/:taskId", taskController.getTaskById)
 /*POST new task */
 taskRouter.post("/tasks", authMiddleware, taskController.createTask)
 /* PATCH update task */

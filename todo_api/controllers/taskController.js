@@ -46,9 +46,22 @@ const createTask = async (req, res) => {
     }
 
 }
+const getTaskById = async(req, res) => {
+    const { taskId } = req.params
+    const task = await Task.findOne({
+        where: {
+            id: taskId.trim()
+        }
+    })
+    if (!task) {
+        return res.status(404).json({ message: "No task with that id" })
+    }
+    return res.status(200).json({ task })
+}
 
 module.exports = {
     createTask,
     getAllTasks,
-    getByStatus
+    getByStatus,
+    getTaskById
 }
