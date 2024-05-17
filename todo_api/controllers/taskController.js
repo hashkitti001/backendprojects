@@ -75,29 +75,29 @@ const updateStatus = async (req, res) => {
         where: {
             id: taskId
         }
-     }
-    )
-    if(!updatedTask){
-        return res.status(201).json({ message: "Couldn't update successfully"})
     }
-    return res.status(200).json({ message: "Updated status successfully"})
+    )
+    if (!updatedTask) {
+        return res.status(201).json({ message: "Couldn't update successfully" })
+    }
+    return res.status(200).json({ message: "Updated status successfully" })
 }
 const deleteTask = async (req, res) => {
-    const {taskId} = req.params
+    const { taskId } = req.params
     const deletedTask = await Task.destroy(
         {
             where: {
                 id: taskId
             }
         }
-        
+
     )
-    if(!deletedTask){
-        return res.status(400).json({ message: "Task id parameter missing. Please pass it to delete this task"})
-   
+    if (!deletedTask) {
+        return res.status(400).json({ message: "Task id parameter missing. Please pass it to delete this task" })
+
     }
-        return res.status(200).json({ message: "Deleted item successfully"})
-        
+    return res.status(200).json({ message: "Deleted item successfully" })
+
 }
 module.exports = {
     createTask,

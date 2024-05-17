@@ -2,9 +2,7 @@ const express = require("express")
 const authMiddleware = require("../utils/authMiddleware")
 const taskRouter = express.Router()
 const taskController = require("../controllers/taskController")
-const dummy = () => {
-    return "Dummy"
-}
+
 /* Get all tasks */
 taskRouter.get("/tasks/alltasks", authMiddleware, taskController.getAllTasks)
 /* Filter tasks by status 
@@ -19,5 +17,6 @@ taskRouter.post("/tasks", authMiddleware, taskController.createTask)
 /* PATCH update task */
 taskRouter.patch("/task/:taskId", authMiddleware, taskController.updateStatus)
 /* DELETE task */
-taskRouter.delete("/tasks/:id", authMiddleware,  taskController.deleteTask)
+taskRouter.delete("/tasks/:id", authMiddleware, taskController.deleteTask)
+
 module.exports = taskRouter

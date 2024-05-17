@@ -52,13 +52,13 @@ const loginUser = async (req, res) => {
         return res.status(200).json({ message: "Logged in" })
     } catch (e) {
         console.error("Couldn't log in user because", e.message)
-        res.status(500).json({ message: "Internal server error"})
+        res.status(500).json({ message: "Internal server error" })
     }
 }
 
 const logoutUser = (req, res) => {
     res.clearCookie('token')
-    res.status(200).json({message: "Logged out"})
+    res.status(200).json({ message: "Logged out" })
 }
 
 module.exports = {

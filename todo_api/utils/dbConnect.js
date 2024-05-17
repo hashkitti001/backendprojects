@@ -8,7 +8,7 @@ const db = new Sequelize(
     dialect: 'mysql'
 })
 async function dbConnect() {
-    
+
     try {
         await db.authenticate()
         console.log("Connected to MySQL database successfully")
@@ -16,4 +16,4 @@ async function dbConnect() {
         console.error("Unable to connect to the network", e.message)
     }
 }
-module.exports = {dbConnect, db}
+module.exports = { dbConnect, db }
