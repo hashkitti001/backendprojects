@@ -14,10 +14,6 @@ const Task = db.define(
             type: DataTypes.STRING,
             allowNull: true,
         },
-        dueDate: {
-            type: DataTypes.DATE,
-            allowNull: true
-        },
         status: {
             type: DataTypes.ENUM("undone", "pending", "done"),
             allowNull: false,
