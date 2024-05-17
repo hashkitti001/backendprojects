@@ -1,9 +1,6 @@
 const express = require("express")
 const userRouter = express.Router()
 const userController = require("../controllers/userController")
-const dummy = () => {
-    return "Dummy"
-}
 
 /* Create new user */
 userRouter.post("/users/createuser", userController.createUser)
@@ -12,7 +9,7 @@ userRouter.post("/users/createuser", userController.createUser)
 userRouter.post("/users/login", userController.loginUser)
 
 /* Logout user */
-userRouter.post("/users/logout", dummy)
+userRouter.post("/users/logout", userController.logoutUser)
 
 
 module.exports = userRouter
