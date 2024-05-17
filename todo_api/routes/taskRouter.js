@@ -11,13 +11,13 @@ taskRouter.get("/tasks/alltasks", authMiddleware, taskController.getAllTasks)
 /tasks/bystatus?status=pending
 */
 
-taskRouter.get("/tasks/bystatus", taskController.getByStatus)
+taskRouter.get("/tasks/bystatus", authMiddleware, taskController.getByStatus)
 /* GET task by id */
-taskRouter.get("/tasks/:taskId", taskController.getTaskById)
+taskRouter.get("/tasks/:taskId", authMiddleware, taskController.getTaskById)
 /*POST new task */
 taskRouter.post("/tasks", authMiddleware, taskController.createTask)
 /* PATCH update task */
-taskRouter.patch("/task/:id", dummy)
+taskRouter.patch("/task/:taskId", authMiddleware, taskController.updateStatus)
 /* DELETE task */
-taskRouter.delete("/tasks/:id", dummy)
+taskRouter.delete("/tasks/:id", authMiddleware,  taskController.deleteTask)
 module.exports = taskRouter

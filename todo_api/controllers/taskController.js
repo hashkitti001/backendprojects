@@ -46,7 +46,7 @@ const createTask = async (req, res) => {
     }
 
 }
-const getTaskById = async(req, res) => {
+const getTaskById = async (req, res) => {
     const { taskId } = req.params
     const task = await Task.findOne({
         where: {
@@ -58,10 +58,52 @@ const getTaskById = async(req, res) => {
     }
     return res.status(200).json({ task })
 }
-
+const updateStatus = async (req, res) => {
+    const { taskId } = req.params
+    const { status } = req.body
+    if (!taskId) {
+        return res.status(409).json({ message: "Task id missing" })
+    }
+    if (!status) {
+        return res.status(409).json({ message: "New status missing" })
+    }
+    if (!status || !["undone", "pending", "done"].includes(status)) {
+        return res.status(400).json({ message: "Invalid status query parameter" });
+    }
+    const updatedTask = await Task.update(
+        { status }, {
+        where: {
+            id: taskId
+        }
+     }
+    )
+    if(!updatedTask){
+        return res.status(201).json({ message: "Couldn't update successfully"})
+    }
+    return res.status(200).json({ message: "Updated status successfully"})
+}
+const deleteTask = async (req, res) => {
+    const {taskId} = req.params
+    const deletedTask = await Task.destroy(
+        {
+            where: {
+                id: taskId
+            }
+        }
+        
+    )
+    if(!deletedTask){
+        return res.status(400).json({ message: "Task id parameter missing. Please pass it to delete this task"})
+   
+    }
+        return res.status(200).json({ message: "Deleted item successfully"})
+        
+}
 module.exports = {
     createTask,
     getAllTasks,
     getByStatus,
-    getTaskById
+    getTaskById,
+    updateStatus,
+    deleteTask
 }
