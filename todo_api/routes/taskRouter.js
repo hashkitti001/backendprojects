@@ -6,7 +6,7 @@ const dummy = () => {
     return "Dummy"
 }
 /* Get all tasks */
-taskRouter.get("/tasks", authMiddleware, dummy)
+taskRouter.get("/tasks/alltasks", authMiddleware, taskController.getAllTasks)
 /* Filter tasks by status 
 /tasks/bystatus?status=pending
 */
