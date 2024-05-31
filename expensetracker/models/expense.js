@@ -20,9 +20,7 @@ const expenseSchema = new Schema({
     },
     "date": {
         type: Date,
-        default: new Date()
-            .toJSON()
-            .substring(0, 10),
+        default: new Date().toString().substring(0, 10),
         required: true
     },
     "userId": {
