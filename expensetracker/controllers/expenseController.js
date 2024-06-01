@@ -2,15 +2,15 @@ const Expense = require("../models/expense")
 const createExpense = async (req, res) => {
     try {
         const { description, amount, category } = req.body
-        if (!description || !amount || !price || !category) {
+        if (!description || !amount || !category) {
             return res.status(409).json({ error: "Please fill all required fields" })
         }
-        if (description && amount && price && category) {
+        if (description && amount  && category) {
             const newExpense = new Expense({
                 description,
                 amount,
-                price,
-                category
+                category,
+                userId: req.user.id
             })
             await newExpense.save()
 
@@ -23,7 +23,7 @@ const createExpense = async (req, res) => {
 }
 const getAllExpenses = async (req, res) => {
     try {
-        const expenses = await Expense.find({ userId: req.user._id })
+        const expenses = await Expense.find({ userId: req.user.id })
         if (!expenses.length) {
             return res.status(404).json({ message: "Couldn't load all expenses" })
         }
@@ -41,7 +41,7 @@ const getLastWeeksExpenses = async (req, res) => {
         //Get timestamp for last week
         oneWeekAgo.setDate(oneWeekAgo.getDate() - 7)
         const lastWeeksExpenses = await Expense.find({
-            userId: req.user._id,
+            userId: req.user.id,
             date: { $gte: oneWeekAgo }
         })
 
@@ -57,11 +57,12 @@ const getLastWeeksExpenses = async (req, res) => {
 const getExpensesByDate = async (req, res) => {
     try {
         const { startDate, endDate } = req.query
+        console.info(startDate, endDate)
         if (!startDate || !endDate) {
             return res.status(400).json({ error: "Please provide start date and end date in your query" })
         }
         const expenses = await Expense.find({
-            userId: req.user._id,
+            userId: req.user.id,
             date: {
                 $gte: new Date(startDate),
                 $lte: new Date(endDate)
@@ -81,7 +82,7 @@ const getExpenseByCategory = async (req, res) => {
 
         }
         const expenses = await Expense.find({
-            userId: req.user._id,
+            userId: req.user.id,
             category
         })
         return res.status(200).json({ expenses })
@@ -96,7 +97,7 @@ const updateExpense = async (req, res) => {
         const updates = req.body
 
         const expense = await Expense.findOneAndUpdate(
-            { _id: id, userId: req.user._id },
+            { id: id, userId: req.user.id },
             updates,
             { new: true }
         )
@@ -108,7 +109,7 @@ const updateExpense = async (req, res) => {
 const deleteExpense = async (req, res) => {
     try {
         const { id } = req.params
-        const deletedExpense = await Expense.findByIdAndDelete({ _id: req.user._id })
+        const deletedExpense = await Expense.findByIdAndDelete({ id: req.user.id })
         if (!deletedExpense) {
             return res.status(404).json({ message: "Couldn't delete expense as it was not found" })
         }

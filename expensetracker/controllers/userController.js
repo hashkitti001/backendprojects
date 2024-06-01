@@ -9,21 +9,18 @@ const createUser = async (req, res) => {
         const { username, password } = req.body
         const salt = await bcrypt.genSalt(5)
         const hashedPassword = await bcrypt.hash(password, salt)
-
-        const [user, created] = await User.findOrCreate({
-            where: { username },
-            defaults: {
-                username,
-                password: hashedPassword
-            }
-
-        })
-        if (created) {
-            return res.status(201).json({ message: "Created new user" })
-
-        } else {
+        const user = await User.findOne({username})
+        if (user) {
             return res.status(409).json({ message: "User already exists" })
         }
+        const newUser = new User(
+            {
+                username,
+                password:hashedPassword
+            
+            })
+            await newUser.save()
+            return res.status(201).json({ message: "Created new user"})
 
     } catch (e) {
         console.error("Couldn't create user because", e.message)
@@ -34,9 +31,7 @@ const createUser = async (req, res) => {
 const loginUser = async (req, res) => {
     try {
         const { username, password } = req.body
-        const user = await User.findOne({
-            where: { username }
-        })
+        const user = await User.findOne({username})
         if (!user) {
             return res.status(404).json({ message: "User doesn't exist. Please sign up to use this service" })
         }
