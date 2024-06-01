@@ -1,8 +1,23 @@
 # Expense Tracker API
 
+## Prerequisites
+
+To run this application, ensure you have the following environment variables set up in a `.env` file:
+
+- `MONGO_URI`: Your MongoDB connection string.
+- `JWT_KEY`: A secret key for signing JWT tokens.
+
+Example `.env` file:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_KEY=your_secret_key
+```
+
 ## Overview
 
-This API allows users to manage their expenses. Users can create, read, update, and delete expenses, as well as filter expenses based on various criteria such as date ranges and categories.
+This API allows users to manage their expenses. 
+Users can create, read, update, and delete expenses, as well as filter expenses based on various criteria such as date ranges and categories as well while ensuring user privacy via JWT authentication
 
 ## Endpoints
 
@@ -152,3 +167,60 @@ The `Expense` model should have the following fields:
 - `description` (optional): Additional details about the expense.
 
 ---
+Sure! Here is the documentation for the user routes and the environment variables setup:
+
+---
+
+
+
+## User Routes
+
+### Create a User
+
+**URL:** `/users`
+
+**Method:** `POST`
+
+**Description:** Create a new user.
+
+**Request Body:**
+- `username`: The username of the new user (required)
+- `password`: The password of the new user (required)
+
+**Responses:**
+- `201 Created`: User created successfully.
+- `409 Conflict`: User already exists.
+- `500 Internal Server Error`: Something went wrong when creating the user.
+
+### Login User
+
+**URL:** `/users/login`
+
+**Method:** `POST`
+
+**Description:** Authenticate a user and provide a JWT token.
+
+**Request Body:**
+- `username`: The username of the user (required)
+- `password`: The password of the user (required)
+
+**Responses:**
+- `200 OK`: Logged in successfully.
+- `404 Not Found`: User doesn't exist. Please sign up to use this service.
+- `409 Conflict`: Invalid password.
+- `500 Internal Server Error`: Something went wrong when logging in.
+
+### Logout User
+
+**URL:** `/users/logout`
+
+**Method:** `POST`
+
+**Description:** Log out the authenticated user by clearing the JWT token cookie.
+
+**Responses:**
+- `200 OK`: Logged out successfully.
+
+---
+
+By following this documentation, you should be able to effectively integrate and utilize the user management endpoints in your Express application. Make sure to configure your `.env` file with the necessary MongoDB connection string and JWT secret key.
