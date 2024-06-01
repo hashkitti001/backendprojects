@@ -9,10 +9,6 @@ const expenseSchema = new Schema({
         type: Number,
         required: true
     },
-    "price": {
-        type: Number,
-        required: true
-    },
     "category": {
         type: String,
         enum: ['Groceries', 'Leisure', 'Electronics', 'Utilities', 'Clothing'],

@@ -1,7 +1,7 @@
 const Expense = require("../models/expense")
 const createExpense = async (req, res) => {
     try {
-        const { description, amount, price, category } = req.body
+        const { description, amount, category } = req.body
         if (!description || !amount || !price || !category) {
             return res.status(409).json({ error: "Please fill all required fields" })
         }
