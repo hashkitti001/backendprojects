@@ -8,10 +8,7 @@
   },
   "keywords": [
     "Node.js",
-    "API",
-    "development",
-    "Python"
-  ],
+    "API"],
   "author": "r3ne",
   "license": "ISC",
   "dependencies": {
