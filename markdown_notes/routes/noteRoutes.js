@@ -24,7 +24,7 @@ const dummy = () => {
     console.log("e")
 }
 noteRouter.post("/check-grammar", upload.single('file'), noteController.checkGrammar)
-noteRouter.post("/save-note", upload.single('file'), dummy)
+noteRouter.post("/save-note", upload.single('file'), noteController.saveNote)
 noteRouter.post('/mdtohtml/', upload.single('file'), noteController.renderAsHTML)
 
 module.exports = noteRouter

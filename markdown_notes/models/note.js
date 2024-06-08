@@ -1,14 +1,17 @@
 // src/models/note.js
 const { DataTypes } = require('sequelize');
-const { db } = require('../config/database');
-
+const { db } = require('../utils/dbConnect');
 const Note = db.define('Note', {
-  content: {
-    type: DataTypes.TEXT,
+  title: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
+  content: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  }
 }, {
   timestamps: true,
 });
-
+db.sync()
 module.exports = Note;
