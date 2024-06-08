@@ -1,0 +1,23 @@
+version: '3.10'
+
+services:
+  markdown_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3001"
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3304:3302"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: markdown
+      MYSQL_USER: rene
+      MYSQL_PASSWORD: password
+    volumes:
+      - mysql_data:/var/lib/mysql
+volumes:
+  mysql_data:
+
