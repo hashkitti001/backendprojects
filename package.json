@@ -8,7 +8,8 @@
   },
   "keywords": [
     "Node.js",
-    "API"],
+    "API"
+  ],
   "author": "r3ne",
   "license": "ISC",
   "dependencies": {
@@ -27,7 +28,8 @@
     "mysql2": "^3.9.7",
     "node-redis": "^0.1.7",
     "redis": "^4.6.14",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "socket.io": "^4.7.5"
   },
   "devDependencies": {
     "jest": "^29.7.0"
