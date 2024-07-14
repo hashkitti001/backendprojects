@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "mig:generate": "drizzle-kit generate:pg",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/pg": "^8.11.6",
+    "dotenv": "^16.4.5",
     "drizzle-kit": "^0.23.0",
     "drizzle-orm": "^0.32.0",
     "pg": "^8.12.0"
