@@ -1,6 +1,9 @@
 export interface UserRequest {
-    username: string
-    password: string
-    email: string
-    phone_number: string
+    userId: number
+    username: string;
+    password: string;
+    email: string;
+    phoneNumber: string;
+    firstName: string;
+    lastName: string;
 }
