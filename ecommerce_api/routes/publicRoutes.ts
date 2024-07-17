@@ -4,4 +4,5 @@ const publicRouter = express.Router()
 
 publicRouter.post("/api/v1/register", createUser)
 publicRouter.post("/api/v1/login", loginUser)
+
 export default publicRouter

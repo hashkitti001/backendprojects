@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import { Request, Response } from "express";
-import { UserRequest } from "../interfaces/UserRequest";
+import { UserRequest } from "../interfaces/UserDto";
 import prisma from "../db/prismaClient";
 import bcrypt from "bcryptjs";
 import validator from "validator";
@@ -86,7 +86,7 @@ const loginUser = async (req: Request<any, any, UserRequest>, res: Response) => 
             return res.status(401).json({ message: "Incorrect password" });
         }
 
-        const token = generateAccessToken(user)
+        const token:string = generateAccessToken(user)
 
         return res.status(200).json({
             status: "200",

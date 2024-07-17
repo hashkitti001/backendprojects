@@ -3,7 +3,7 @@ export interface UserRequest {
     username: string;
     password: string;
     email: string;
-    phoneNumber: string;
-    firstName: string;
-    lastName: string;
+    phoneNumber: string | null;
+    firstName: string | null;
+    lastName: string | null;
 }
