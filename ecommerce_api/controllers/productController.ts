@@ -56,7 +56,6 @@ const updateProduct = async (req: Request<{ id: string }, any, { name: string; d
     const { name, description, price } = req.body;
 
     try {
-
         if (validator.isEmpty(name) || name.length <= 6) {
             return res.status(400).json({ message: "Product must have a name" });
         }
